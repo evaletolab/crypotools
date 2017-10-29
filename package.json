@@ -1,0 +1,30 @@
+{
+  "name": "cryptotools",
+  "version": "1.0.0",
+  "description": "basic helpers for offline actions on btc and ethereum",
+  "dependencies": {
+    "bitcoinjs-lib": "^3.2.1",
+    "ethereumjs-tx": "^1.3.3",
+    "minimist": "^1.2.0",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evaletolab/cryptotools.git"
+  },
+  "keywords": [
+    "btc",
+    "ethereum",
+    "tools"
+  ],
+  "author": "Olivier Evalet <evaleto@gmail.com> (http://evaletolab.ch/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/evaletolab/cryptotools/issues"
+  },
+  "homepage": "https://github.com/evaletolab/cryptotools/README.md"
+}
