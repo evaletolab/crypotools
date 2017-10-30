@@ -30,10 +30,16 @@ Je propose une solution qui selon moi, équilibre la balance sécurité et facil
 # create a chrooted debian dedicated for transactions (LTE,BTC,DASH,ETHER)
 A debiand chrooted OS is the most simple way to sandbox your application and files in a clean environnment. Prerequisite:
 
-* debian/ubuntu OS host
-* debootstrap git should be installed
-* change directory in $HOME/Documents/crypto  
-* install files git clone https://github.com/evaletolab/cryptocoins
+**Prerequisite:**
+* debian/ubuntu 
+* debootstrap, git installed
+
+```bash
+mkdir Documents/crypto
+cd Documents/crypto
+git clone https://github.com/evaletolab/cryptocoins
+cd cryptocoins
+```
 
 
 ## create filesystem that will contains our debian and all needed content
@@ -41,21 +47,22 @@ You can edit the file `boot.sh` to modify variables on top!
 
   `sudo sh boot.sh install`
 
+## sign your transaction
 
-# More security, avoid history & network
-Simple security actions
+```bash
+sudo sh boot.sh
+cd cryptocoins
+# ethereum
+node ethsign.js -f <priv> -t <pub> -a 0.001
+# bitcoin
+node btcsign.js -f <priv> -t <pub> -a 1
+node btcsign.js -b <priv> 
 
-* You can stop a part of the network `service named stop`
-* Desactivate history of you commands `export HISTFILE=/dev/null`
 
-
-
-# push your offline transactions 
+## push your offline transactions 
 * https://etherscan.io/pushTx
 * https://blockchain.info/pushtx
 * 
-node ethsign.js -f e331b6d69882b4cb4ea581d88e0b604039a3de5967688d3dcffdd2270c0fd109 -t 0000000000000000000000000000000000000000 -a 0.001
-node btcsign.js -f c8eae8b7f1d22ab5665c5799c3fb5b7ef4b71e02daa663ec8dafa373dc05db92 -t 1evXk3oLDPdi7gfrvfdDnCSSAYuxscLWV -a 1
 
 
 
