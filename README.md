@@ -52,11 +52,11 @@ You can edit the file `boot.sh` to modify variables on top!
 ```bash
 sudo sh boot.sh
 cd cryptocoins
-# ethereum
+# ethereum params: -from -to -amount
 node ethsign.js -f <priv> -t <pub> -a 0.001
-# bitcoin
+# bitcoin params: -from -to -amount -balance
 node btcsign.js -b <pub> # get balance
-node btcsign.js -f c8eae8b7f1d22ab5665c5799c3fb5b7ef4b71e02daa663ec8dafa373dc05db92 -t 1evXk3oLDPdi7gfrvfdDnCSSAYuxscLWV -a 1
+node btcsign.js -f <priv> -t <pub> -a 1
 
 ```
 
