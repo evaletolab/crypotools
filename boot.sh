@@ -43,7 +43,7 @@ WIM=$(whoami)
   export HOME=/root
   chroot $CHROOT_HOME apt-get -y --force-yes install git curl  
   chroot $CHROOT_HOME bash -c "curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash"
-  chroot $CHROOT_HOME bash -c "cd root;git clone https://github.com/evaletolab/cryptocoins"
+  chroot $CHROOT_HOME bash -c "cd root;git clone https://github.com/evaletolab/cryptocoins;cd cryptocoins;npm install"
   chroot $CHROOT_HOME bash -c "source ~/.profile;nvm install stable;echo PS1='\[\e[1;31m\]\u@\h:\w\${text}$\[\e[m\] '>>~/.bashrc;echo 'cd /root/cryptocoins'>>~/.bashrc"
   umount $CHROOT_HOME
   echo "installation is done! "
