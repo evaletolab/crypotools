@@ -1,9 +1,12 @@
 const params = require('minimist')(process.argv.slice(2));
 const EthereumTx = require('ethereumjs-tx');
+
+if(!params.f||!params.t||!params.a){
+    console.log('usage:','node ethsign.js -f privatekey -t destination -a 0.01');
+    process.exit();
+}
+
 const privateKey = Buffer.from(params.f, 'hex')
-
-
-
 const tx = new EthereumTx(null,1);
 // So now we have created a blank transaction but Its not quiet valid yet. We
 // need to add some things to it. Lets start:
