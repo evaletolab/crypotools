@@ -1,25 +1,46 @@
 const params = require('minimist')(process.argv.slice(2));
+const Units = require('ethereumjs-units');
+const Utils = require('ethjs-util');
 const EthereumTx = require('ethereumjs-tx');
+
+//
+// https://github.com/ethjs/ethjs-util/blob/master/docs/user-guide.md
+// https://github.com/ethereumjs/helpeth
+
 
 if(!params.f||!params.t||!params.a){
     console.log('usage:','node ethsign.js -f privatekey -t destination -a 0.01');
     process.exit();
 }
 
-const privateKey = Buffer.from(params.f, 'hex')
-const tx = new EthereumTx(null,1);
-// So now we have created a blank transaction but Its not quiet valid yet. We
-// need to add some things to it. Lets start:
-// notice we don't set the `to` field because we are creating a new contract.
-tx.nonce = 0;
-tx.gasPrice = 100;
-tx.gasLimit = 2710;
-tx.value = params.a||0;
-tx.to=params.t||'';
-if(params.d){
-    tx.data=params.d;
+if(typeof params.t!=='string'||typeof params.f!=='string'){
+    console.log('usage: You must strip 0x in your private or public keys ');
+    process.exit();
 }
 
+const value=Units.convert(params.a,'ether','wei');
+const to=params.t;
+
+//
+// gasLimit: 
+//  - 21000,0x5208    (0.00042=>0.126$)
+//  - 60500,0xEC54    (0.00121=>0.363$) 
+//  - 121000,0x1D8A8  (0.00242=>0.726$)
+//
+// 1 gas = 0.00000002 (ether)
+const raw={
+  "nonce":"0x00",
+  "gasPrice":"0x00",
+  "gasLimit":"0x1D8A8",
+  "to":Utils.isHexPrefixed(to)?to:("0x"+to),
+  "value":"0x"+(parseInt(value)).toString(16),
+  "data":"",
+  "chainId":1
+};
+
+
+const privateKey = Buffer.from(Utils.stripHexPrefix(params.f), 'hex')
+const tx=new EthereumTx(raw);
 tx.sign(privateKey);
 
 // gas price
@@ -29,8 +50,9 @@ tx.sign(privateKey);
 // it with needs to have a certain amount of wei in to. To see how much this
 // account needs we can use the getUpfrontCost() method.
 var feeCost = tx.getUpfrontCost()
-tx.gas = feeCost
-console.log('Total Amount of wei needed:' + feeCost.toString())
+//tx.gas = feeCost
+console.log('Total Amount of wei needed:' + feeCost.toString(),'\n')
+
 
 // if your wondering how that is caculated it is
 // bytes(data length) * 5
@@ -38,11 +60,13 @@ console.log('Total Amount of wei needed:' + feeCost.toString())
 // + gasAmount * gasPrice
 
 // lets serialize the transaction
-
+const rawtx=tx.serialize().toString('hex');
 console.log('---Serialized TX----')
-console.log(tx.serialize().toString('hex'))
+console.log(rawtx)
 console.log('--------------------')
 
 
 
 console.log('-- ','https://etherscan.io/pushTx')
+
+
