@@ -66,9 +66,9 @@ It's important here to use a very strong password dedicated on all electrum appl
 ```bash
 # BTC
 electrum restore :
-# BTC
-electrum-ltc restore :
 # LTC
+electrum-ltc restore :
+# DASH
 electrum-dash restore :
 # BCH
 electron-cash restore :
