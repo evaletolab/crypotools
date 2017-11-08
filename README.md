@@ -21,15 +21,14 @@ cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1
 
 ## Create your offline *cold wallet* 
 With all cryptocurrencies, you are the bank, with all the risks! 
-liberté individuelle mais à la moindre erreur, vous perdez tout :fire:! 
 
 1. Mount your USB keys (formated for Linux only :fire:)
 1. Create a dedicated password manager file in your usbkey
 1. Create papers wallets, print them and **delete all files** (*disable chrome/firefox extensions during this process*)! 
-  * bitcoin, https://www.bitaddress.org/ 
-  * ethereum, https://www.myetherwallet.com/ 
-  * dash, https://paper.dash.org/ 
-  * litecoin https://liteaddress.org/ 
+   * bitcoin, https://www.bitaddress.org/ 
+   * ethereum, https://www.myetherwallet.com/ 
+   * dash, https://paper.dash.org/ 
+   * litecoin https://liteaddress.org/ 
 2. Saves paper wallets pub/private keys on your password manager 
 3. Create offline transaction in secure environnement
 4. Push your signed transactions online
