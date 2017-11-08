@@ -54,7 +54,7 @@ That will install a minimal debian version with the following softwares:
 * electrum-ltc
 * electron-cash 
 
-> **You must save the `chroot.debian image on your cold storage (USB key)**
+> **You must save the `chroot.debian image with the boot.sh script on your cold storage (USB key)**
 
 ## import wallets from password manager in electrum
 It's important here to use a very strong password dedicated on all electrum applications (>=20 random chars must be placed on your pass manager).
