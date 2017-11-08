@@ -5,14 +5,14 @@ This solution is currently designed to be ran on a debian compatible GNU / Linux
 
 ## Installation & usage 
 1. create safe offline printed wallets with a backup in external (USB) device 
-2. install our chrooted debian OS in your current OS 
+2. install our chrooted debian OS in your `usb device` 
 3. use offline scripts to create transaction for ether, bitcoin, litecoin, dash or bitcoin cash
 
 ## Use a «password manager» (ex. [revelation](https://revelation.olasagasti.info/),[pass](https://www.passwordstore.org/), autres ... )
 All your privates keys must be saved in a offline storage :fire:.
-1. Create a dedicated password-manager-file in your `usbkey`
+1. Create a dedicated password-manager-file in your `usb device` 
 2. Do not save a copy in your computer :fire:!
-3. Generate a *strong random password dedicated for wallets applications located in `jailroot`* environnement and save it in your password-manager
+3. Generate a *strong random password dedicated for wallets applications located in `jailroot`* environnement and store it in your password-manager
 
 ```bash
 # this commande will help
@@ -23,30 +23,34 @@ cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1
 With all cryptocurrencies, you are the bank, with all the risks! 
 liberté individuelle mais à la moindre erreur, vous perdez tout :fire:! 
 
-0. Mount your USB keys
+1. Mount your USB keys (formated for Linux only :fire:)
 1. Create a dedicated password manager file in your usbkey
 1. Create papers wallets, print them and **delete all files** (*disable chrome/firefox extensions during this process*)! 
-  1. bitcoin, https://www.bitaddress.org/ 
-  2. ethereum, https://www.myetherwallet.com/ 
-  3. dash, https://paper.dash.org/ 
-  4. litecoin https://liteaddress.org/ 
+  * bitcoin, https://www.bitaddress.org/ 
+  * ethereum, https://www.myetherwallet.com/ 
+  * dash, https://paper.dash.org/ 
+  * litecoin https://liteaddress.org/ 
 2. Saves paper wallets pub/private keys on your password manager 
 3. Create offline transaction in secure environnement
 4. Push your signed transactions online
 
 
-# create a chrooted debian dedicated for transactions (LTE,BTC,DASH,ETHER)
+## build a chrooted debian dedicated for transactions (LTE,BTC,DASH,ETHER)
 A debiand chrooted OS is the most simple way to sandbox your application and files in a clean environnment. 
 
 **Prerequisite:**
 * debian/ubuntu 
 * debootstrap, git installed
+* copy boot.ch file in your `usb device`
 
 
 ## create filesystem that will contains our debian and all needed content
 You can edit the file `boot.sh` to modify variables on top!
 
-  `sudo sh boot.sh install`
+```bash
+cd /path/to/your/usb/device
+sudo sh boot.sh install
+```
 
 That will install a minimal debian version with the following softwares:
 * electrum 
