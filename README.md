@@ -15,7 +15,7 @@ All your privates keys must be saved in a offline storage :fire:.
 3. Generate a *strong random password dedicated for wallets applications located in `jailroot`* environnement and store it in your password-manager
 
 ```bash
-# this commande will help
+# this commande will generate strong password
 cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1
 ```
 
