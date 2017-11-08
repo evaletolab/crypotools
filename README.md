@@ -8,11 +8,11 @@ Cette solution fonctionne pour l'instant sur un système GNU/Linux compatible de
 2. install our chrooted debian OS in your current OS 
 3. use offline scripts to create transaction for ether, bitcoin, litecoin, dash or bitcoin cash
 
-## Utiliser un «Password Manager» (ex. [revelation](https://revelation.olasagasti.info/),[pass](https://www.passwordstore.org/), autres ... )
-Vos clés de vos cryptomonnaies doivent être isolées de vos affaires courrantes.
-1. Créer un fichier propre pour gérer vos clés privés.
-2. Le fichier doit toujours être sur un support offline (par exemple des clés USB).
-3. Generate a *strong password dedicated for electrum on the `chroot`* environnement
+## Use a «password manager» (ex. [revelation](https://revelation.olasagasti.info/),[pass](https://www.passwordstore.org/), autres ... )
+All your privates keys must be saved in a offline storage.
+1. Create a dedicated password-manager-file in your usbkey
+2. Do not save a copy in your computer!
+3. Generate a *strong random password dedicated for wallets applications located in `jailroot`* environnement and save it in your password-manager
 
 ```bash
 # this commande will help
@@ -21,18 +21,19 @@ cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1
 
 
 ## Create your offline *cold wallet* 
-Pour toutes les cryptos monnaies, la banque c'est vous! C'est donc une nouvelle 
+With all cryptocurrencies, you are the bank, with all the risks! 
 liberté individuelle mais à la moindre erreur, vous perdez tout :fire:! 
 
 0. Mount your USB keys
-1. Create password manager file 
-1. Create papers wallets, print them and delete all files (note to disable chrome/firefox extensions)! 
+1. Create a dedicated password manager file in your usbkey
+1. Create papers wallets, print them and **delete all files** (*disable chrome/firefox extensions during this process*)! 
   1. bitcoin, https://www.bitaddress.org/ 
   2. ethereum, https://www.myetherwallet.com/ 
   3. dash, https://paper.dash.org/ 
   4. litecoin https://liteaddress.org/ 
 2. Saves paper wallets pub/private keys on your password manager 
 3. Create offline transaction in secure environnement
+4. Push your signed transactions online
 
 
 # create a chrooted debian dedicated for transactions (LTE,BTC,DASH,ETHER)
