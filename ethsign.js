@@ -28,7 +28,7 @@ if(typeof params.t!=='string'||typeof params.f!=='string'){
     process.exit();
 }
 
-if(!params.n){
+if(params.n===undefined){
     console.log('usage : get nonce (-n) value @ https://www.myetherwallet.com/#offline-transaction');
     process.exit();
 }

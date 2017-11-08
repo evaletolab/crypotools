@@ -4,6 +4,11 @@ Le but de ce projet est de proposer une solution pour pouvoir gérer avec une
 assez bonne sécurité des comptes privés de cryptomonnaies. 
 Cette solution fonctionne pour l'instant sur un système GNU/Linux compatible debian .
 
+## Installation & Usage 
+1. create safe offline wallets with backup in external (USB) device 
+2. install our chrooted debian OS in your current OS 
+3. use offline scripts to transfer ether, bitcoins, litecoins, or dash
+
 ## Utiliser un «Password Manager» (ex. [revelation](https://revelation.olasagasti.info/),[pass](https://www.passwordstore.org/), autres ... )
 Vos clés de vos cryptomonnaies doivent être isolées de vos affaires courrantes.
 1. Créer un fichier propre pour gérer vos clés privés.
@@ -63,5 +68,11 @@ node btcsign.js -f <priv> -t <pub> -a 1
 ## push your offline transactions 
 * https://etherscan.io/pushTx
 * https://blockchain.info/pushtx
+* https://live.blockcypher.com/ltc/pushtx/
+* https://insight.dash.org/insight/tx/send
+
+* https://live.blockcypher.com/ltc/decodetx/
+* [verifying transactions](https://coinb.in/#verify)
+* [testing your segwit transaction on segnet](http://n.bitcoin.ninja/checktx)
 
 

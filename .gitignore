@@ -1,4 +1,5 @@
 config/config-production.js
+chroot.debianfs
 node_modules
 node_modules.*
 tips
