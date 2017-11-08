@@ -87,12 +87,12 @@ electrum getbalance
 electrum(-dash|-ltc|-cash) payto <address> <amount> (or ! for all)
 ```
 
-## push your offline transactions 
-* https://etherscan.io/pushTx
-* https://blockchain.info/pushtx
-* https://live.blockcypher.com/ltc/pushtx/
-* https://insight.dash.org/insight/tx/send
-* https://pool.viabtc.com/tools/BCC/broadcast/
+### push your transactions 
+* ETH, https://etherscan.io/pushTx
+* BTC, https://blockchain.info/pushtx
+* LTC, https://live.blockcypher.com/ltc/pushtx/
+* DASH, https://insight.dash.org/insight/tx/send
+* BCH, https://pool.viabtc.com/tools/BCC/broadcast/
 
 
 ### case of ethereum 
