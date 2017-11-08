@@ -40,14 +40,14 @@ A debiand chrooted OS is the most simple way to sandbox your application and fil
 **Prerequisite:**
 * debian/ubuntu 
 * debootstrap, git installed
-* copy boot.sh file in your `usb device`
+* copy script in your usb device `cp boot.sh /path/usb/device`
 
 
 ## create filesystem that will contains our debian and all needed content
 You can edit the file `boot.sh` to modify variables on top!
 
 ```bash
-cd /path/to/your/usb/device
+cd /path/usb/device
 sudo sh boot.sh install
 ```
 
@@ -60,14 +60,18 @@ That will install a minimal debian version with the following softwares:
 > **:fire: You must save the `chroot.debian image with the boot.sh script on your cold storage (USB key)**
 
 ## import wallets from password manager in electrum
-It's important here to use a very strong password dedicated on all electrum applications (>=20 random chars must be placed on your pass manager).
+> It's important here to use a very strong password dedicated on all electrum applications (>=20 random chars must be placed on your pass manager).
+
+### mount your jailrooted installation
+```bash
+# 1. place your external usb device
+# 2. mount the jailroot 
+cd /usb/device;sudo bash boot.sh 
+```
 
 ### using jailrooted wallets (LTC,DASH,BTC,BCH,ETHER)
 
 ```bash
-# mount the jailroot (placed in your external device)
-sudo bash boot.sh 
-
 # BTC
 electrum restore :
 # LTC
@@ -81,8 +85,6 @@ electron-cash restore :
 ### get balance 
 
 ```bash
-# mount the jailroot (placed in your external device)
-sudo bash boot.sh 
 electrum getbalance
 
 ```
@@ -90,9 +92,6 @@ electrum getbalance
 ### sign transaction
 
 ```bash
-# mount the jailroot (placed in your external device)
-sudo bash boot.sh 
-
 electrum(-dash|-ltc|-cash) payto <address> <amount> (or ! for all)
 ```
 
