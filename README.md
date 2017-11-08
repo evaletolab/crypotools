@@ -1,24 +1,23 @@
-# 99% Secure to manage private bitcoin and ethereum
-Le but de ce projet est de proposer une solution simple pour pouvoir gérer avec sécurité 
-les principaux comptes privés de cryptomonnaies (BTC,LTC,DASH,BCH). 
-Cette solution fonctionne pour l'instant sur un système GNU/Linux compatible debian.
+# Manage private cryptocurrencies with 99% safety
+The purpose of this project is to propose a simple solution to manage in secure way
+your private cryptocurrency accounts (BTC, LTC, DASH, BCH).
+This solution is currently designed to be ran on a debian compatible GNU / Linux OS.
 
-## Installation & Usage 
+## Installation & usage 
 1. create safe offline printed wallets with a backup in external (USB) device 
 2. install our chrooted debian OS in your current OS 
 3. use offline scripts to create transaction for ether, bitcoin, litecoin, dash or bitcoin cash
 
 ## Use a «password manager» (ex. [revelation](https://revelation.olasagasti.info/),[pass](https://www.passwordstore.org/), autres ... )
-All your privates keys must be saved in a offline storage.
-1. Create a dedicated password-manager-file in your usbkey
-2. Do not save a copy in your computer!
+All your privates keys must be saved in a offline storage :fire:.
+1. Create a dedicated password-manager-file in your `usbkey`
+2. Do not save a copy in your computer :fire:!
 3. Generate a *strong random password dedicated for wallets applications located in `jailroot`* environnement and save it in your password-manager
 
 ```bash
 # this commande will help
 cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1
 ```
-
 
 ## Create your offline *cold wallet* 
 With all cryptocurrencies, you are the bank, with all the risks! 
