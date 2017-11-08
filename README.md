@@ -63,7 +63,11 @@ That will install a minimal debian version with the following softwares:
 It's important here to use a very strong password dedicated on all electrum applications (>=20 random chars must be placed on your pass manager).
 
 ### using jailrooted wallets (LTC,DASH,BTC,BCH,ETHER)
+
 ```bash
+# mount the jailroot (placed in your external device)
+sudo bash boot.sh 
+
 # BTC
 electrum restore :
 # LTC
@@ -77,6 +81,8 @@ electron-cash restore :
 ### get balance 
 
 ```bash
+# mount the jailroot (placed in your external device)
+sudo bash boot.sh 
 electrum getbalance
 
 ```
@@ -84,6 +90,9 @@ electrum getbalance
 ### sign transaction
 
 ```bash
+# mount the jailroot (placed in your external device)
+sudo bash boot.sh 
+
 electrum(-dash|-ltc|-cash) payto <address> <amount> (or ! for all)
 ```
 
