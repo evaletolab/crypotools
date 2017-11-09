@@ -3,12 +3,11 @@ The purpose of this project is to propose a simple solution to manage in secure 
 your private cryptocurrency accounts (BTC, LTC, DASH, BCH).
 This solution is currently designed to be ran on a debian compatible GNU / Linux OS.
 
-## Installation & usage 
 1. create safe offline printed wallets with a backup in external (USB) device 
 2. install our chrooted debian OS in your `usb device` 
 3. use offline scripts to create transaction for ether, bitcoin, litecoin, dash or bitcoin cash
 
-## 1. Use a «password manager» to store privates keys(ex. [revelation](https://revelation.olasagasti.info/),[pass](https://www.passwordstore.org/), ...)
+## 1.Use a «password manager» to store privates keys(ex. [revelation](https://revelation.olasagasti.info/),[pass](https://www.passwordstore.org/), ...)
 All your privates keys must be saved in a offline storage :fire:.
 1. Create a dedicated password-manager-file in your `usb device` 
 2. Do not save a copy in your computer :fire:!
