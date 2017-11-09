@@ -68,6 +68,7 @@ That will install a minimal debian version with the following softwares:
 # 2. mount the jailroot 
 cd /usb/device;sudo bash boot.sh 
 ```
+![image](https://user-images.githubusercontent.com/1422935/32614813-5be24cee-c56e-11e7-9670-dc5ce2f19213.png)
 
 ### using jailrooted wallets (LTC,DASH,BTC,BCH,ETHER)
 
