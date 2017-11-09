@@ -3,11 +3,7 @@ The purpose of this project is to propose a simple solution to manage in secure 
 your private cryptocurrency accounts (BTC, LTC, DASH, BCH).
 This solution is currently designed to be ran on a debian compatible GNU / Linux OS.
 
-1. create safe offline printed wallets with a backup in external (USB) device 
-2. install our chrooted debian OS in your `usb device` 
-3. use offline scripts to create transaction for ether, bitcoin, litecoin, dash or bitcoin cash
-
-## 1.Use a «password manager» to store privates keys(ex. [revelation](https://revelation.olasagasti.info/),[pass](https://www.passwordstore.org/), ...)
+## 1. Use a «password manager» to store privates keys(ex. [revelation](https://revelation.olasagasti.info/),[pass](https://www.passwordstore.org/), ...)
 All your privates keys must be saved in a offline storage :fire:.
 1. Create a dedicated password-manager-file in your `usb device` 
 2. Do not save a copy in your computer :fire:!
@@ -18,7 +14,7 @@ All your privates keys must be saved in a offline storage :fire:.
 cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1
 ```
 
-## 2.Create your offline *cold wallet* 
+## 2. Create your offline *cold wallet* 
 With all cryptocurrencies, you are the bank, with all the risks! 
 
 1. Mount your USB keys (formated for Linux only :fire:)
@@ -33,7 +29,7 @@ With all cryptocurrencies, you are the bank, with all the risks!
 4. Push your signed transactions online
 
 
-## 3.Build a chrooted debian dedicated for transactions (LTE,BTC,DASH,ETHER)
+## 3. Build a chrooted debian dedicated for transactions (LTE,BTC,DASH,ETHER)
 A debiand chrooted OS is the most simple way to sandbox your application and files in a clean environnment. 
 
 **Prerequisite:**
@@ -58,7 +54,7 @@ That will install a minimal debian version with the following softwares:
 
 > **:fire: You must save the `chroot.debian image with the boot.sh script on your cold storage (USB key)**
 
-## 4.Import wallets from password manager in electrum
+## 4. Import wallets from password manager in jailrooted electrum
 > It's important here to use a the strong password dedicated (generated) on all electrum applications (>=20 random chars must be placed on your pass manager).
 
 ### mount your jailrooted installation
