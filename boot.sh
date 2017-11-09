@@ -3,7 +3,7 @@
 
 #
 # simple check
-export CHROOT_HOME=/media/chroot
+export CHROOT_HOME=$HOME/.chroot.debianfs
 export CHROOT_FS=./chroot.debianfs
 export USER=crypto
 export LC_ALL=C
@@ -15,9 +15,18 @@ WIM=$(whoami)
 }
 
 
-[ -z "$CHROOT_HOME" ] && {
-  echo "chroot home is not define"
+[ -z "$HOME" ] && {
+  echo "home is not define, bye!"
   exit;
+}
+
+[ -z "$CHROOT_HOME" ] && {
+  echo "chroot home is not define, bye!"
+  exit;
+}
+
+[ ! -d "$CHROOT_HOME" ] && {
+  mkdir $CHROOT_HOME && chown root:root $CHROOT_HOME && chmod 700 $CHROOT_HOME
 }
 
 #
@@ -63,8 +72,9 @@ WIM=$(whoami)
 
 
   chroot $CHROOT_HOME su -l $USER -c "curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash"
+  chroot $CHROOT_HOME su -l $USER -c "echo PS1=\'unset HISTFILE\'>>~/.bashrc"
   chroot $CHROOT_HOME su -l $USER -c "echo PS1=\'\\\[\\\e[1\;31m\\\]\\\u@\\\h\:\\\w\${text}$\\\[\\\e[m\\\] \'>>~/.bashrc"
-  chroot $CHROOT_HOME su -l $USER -c "echo cowsay 'welcome!'>>~/.bashrc"
+  chroot $CHROOT_HOME su -l $USER -c "echo cowsay 'welcome $1!'>>~/.bashrc"
 #  chroot $CHROOT_HOME su -l $USER -c "source .profile;nvm install stable;npm install"  
   umount $CHROOT_HOME
   echo "installation is done! "
@@ -88,7 +98,7 @@ WIM=$(whoami)
 }
 
 export HOME=/root
-export HISTFILE=/dev/null
+unset HISTFILE
 chroot $CHROOT_HOME su -l $USER 
 for i in dev/pts proc dev
 do
