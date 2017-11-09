@@ -32,6 +32,11 @@ WIM=$(whoami)
 #
 # install
 [ "$1" = "install" ] && {
+  [ -z "$2" ] && {
+    echo "usage: sudo bash boot.sh install <account-short-name>"
+    exit;
+  }
+
   [ -f "$CHROOT_HOME/proc/partitions" ] && {
     echo "Already mounted chroot"
     exit;
@@ -53,7 +58,7 @@ WIM=$(whoami)
   [ ! -f "$CHROOT_HOME/proc/partitions" ] && mount -o loop $CHROOT_FS $CHROOT_HOME
   
   #debian => wheezy, http://httpredir.debian.org/debian
-  debootstrap --include=git,cowsay,curl,libusb-1.0-0-dev,libudev-dev --arch amd64 $UBUNTUREL  $CHROOT_HOME http://archive.ubuntu.com/ubuntu/
+  debootstrap --include=git,curl,nano,libusb-1.0-0-dev,libudev-dev --arch amd64 $UBUNTUREL  $CHROOT_HOME http://archive.ubuntu.com/ubuntu/
 
   # copying script inside protected chroot
   export HOME=/root SUDO_UID=0 SUDO_USER=root
@@ -61,7 +66,7 @@ WIM=$(whoami)
 
   chroot $CHROOT_HOME bash -c 'echo "deb http://archive.ubuntu.com/ubuntu $UBUNTUREL universe">>/etc/apt/sources.list'
   chroot $CHROOT_HOME apt-get -y --force-yes update
-  chroot $CHROOT_HOME apt-get -y --force-yes install python python-pip python3-pip
+  chroot $CHROOT_HOME apt-get -y --force-yes install python python-pip python3-pip cowsay
   # update-alternatives --install /usr/bin/python python /usr/bin/python3.4 2
 
   chroot $CHROOT_HOME bash -c "useradd -m -s /bin/bash -d /home/$USER $USER;passwd -d $USER;add-apt-repository universe;pip2 install --upgrade pip"
@@ -73,8 +78,9 @@ WIM=$(whoami)
 
   chroot $CHROOT_HOME su -l $USER -c "curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash"
   chroot $CHROOT_HOME su -l $USER -c "echo PS1=\'unset HISTFILE\'>>~/.bashrc"
-  chroot $CHROOT_HOME su -l $USER -c "echo PS1=\'\\\[\\\e[1\;31m\\\]\\\u@\\\h\:\\\w\${text}$\\\[\\\e[m\\\] \'>>~/.bashrc"
-  chroot $CHROOT_HOME su -l $USER -c "echo cowsay 'welcome $1!'>>~/.bashrc"
+  chroot $CHROOT_HOME su -l $USER -c "echo PS1=\'\\\[\\\e[1\;31m\\\]\\\u-$2@\\\h\:\\\w\${text}$\\\[\\\e[m\\\] \'>>~/.bashrc"
+  chroot $CHROOT_HOME su -l $USER -c "echo cowsay 'welcome $2! type cat HELP.md'>>~/.bashrc"
+  cp HELP.md $CHROOT_HOME/home/$USER/
 #  chroot $CHROOT_HOME su -l $USER -c "source .profile;nvm install stable;npm install"  
   umount $CHROOT_HOME
   echo "installation is done! "
@@ -99,6 +105,7 @@ WIM=$(whoami)
 
 export HOME=/root
 unset HISTFILE
+echo "Starting $CHROOT_FS in protected $CHROOT_HOME"
 chroot $CHROOT_HOME su -l $USER 
 for i in dev/pts proc dev
 do
